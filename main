@@ -1,0 +1,118 @@
+import time
+import keyboard as k
+import functions
+
+
+# Переменные
+coins = 0
+coins_per_sec = 0.5
+energy = 500
+energy_consumption = 1
+lvl = 0
+loose = False
+
+
+# Горячие клавиши
+k.add_hotkey('t', lambda: print(f"Balance: {coins}\nCoins per second: {coins_per_sec}\n"
+                                f"Energy consumption: {energy_consumption}\nEnergy: {energy}\nLVL: {lvl}\n"))
+k.add_hotkey('p', lambda: print("The essence of the game is to swing up to level 10. To do this, you need to buy\n"
+                                "mining farms that will increase your income.\n"
+                                "Initially, your income is 0.5 coins per second. To buy a farm, press the S key and a\n"
+                                "store will open, which will have different\n"
+                                "mining farms in terms of capacity and cost. It won't be a problem to buy them.\n"
+                                "There is also an electricity consumption in the game. By buying a more powerful farm\n"
+                                ",electricity consumption increases. To increase your energy supply, buy a store of\n"
+                                "electricity in the store. Initially, the energy consumption is 1 kW per hour. When \n"
+                                "buying a new farm, the level increases. When you buy a new farm, the old one\n"
+                                "disappears. To find out stat\n"
+                                "(number of coins, coins per second, level and energy consumption), press the T key\n"))
+
+# Начало игры
+start_btn = input("Здравствуйте, нажмите любую клавишу для запуска игры: ")
+
+if start_btn != '`':
+    print("Welcome to MinerGame!\n")
+    print("If U want to read a reference, pls press P key")
+    # Сюда нужно переходить, в случае удачной покупки энергии!
+    while not loose:
+        while not loose:
+            time.sleep(1)
+            coins += coins_per_sec
+            energy -= energy_consumption
+            btn_s = k.is_pressed('s')
+            if energy <= 0:
+                print("Закончилась энергия! Купите ее!")
+                break
+            if lvl == 3:
+                print("U WIN!!!")
+                loose = True
+            if btn_s:
+                functions.shop_list()
+                time.sleep(0.1)
+                while True:
+                    btn_1 = k.is_pressed('1')
+                    btn_2 = k.is_pressed('2')
+                    btn_3 = k.is_pressed('3')
+                    btn_4 = k.is_pressed('4')
+                    btn_esc = k.is_pressed('esc')
+                    if btn_1:
+                        if coins >= 250:
+                            print("Nice! U buy store of electricity! I have returned you to the spoils")
+                            energy += 1000
+                            coins -= 250
+                            break
+                        else:
+                            print("Недостаточно средств")
+                            time.sleep(0.1)
+                    elif btn_2:
+                        if coins >= 20:
+                            print("Nice! U buy lvl 1 miner. Your lvl is 1. I have returned you to the spoils")
+                            lvl = 1
+                            coins_per_sec = 2
+                            energy_consumption = 3
+                            coins -= 20
+                            break
+                        else:
+                            print("Недостаточно средств")
+                            time.sleep(0.1)
+                    elif btn_3:
+                        if coins >= 120:
+                            print("Nice! U buy lvl 2 miner. Your lvl is 2. I have returned you to the spoils")
+                            lvl = 2
+                            coins_per_sec = 5
+                            energy_consumption = 6
+                            coins -= 120
+                            break
+                        else:
+                            print("Недостаточно средств")
+                            time.sleep(0.1)
+                    elif btn_4:
+                        if coins >= 350:
+                            print("Nice! U buy lvl 3 miner. Your lvl is 3. I have returned you to the spoils")
+                            lvl = 3
+                            coins_per_sec = 10
+                            energy_consumption = 15
+                            coins -= 350
+                            break
+                        else:
+                            print("Недостаточно средств")
+                            time.sleep(0.1)
+                    elif btn_esc:
+                        print("Заходите еще!")
+                        break
+        while not loose:
+            functions.shop_list()
+            btn_1 = k.is_pressed('1')
+            btn_esc = k.is_pressed('esc')
+            if btn_1:
+                if coins >= 250:
+                    print("Nice! U buy store of electricity! I have returned you to the spoils")
+                    energy += 1000
+                    coins -= 250
+                    break
+
+                else:
+                    print("Недостаточно средств")
+                    print("Увы, но вы проиграли.")
+                    loose = True
+                    break
