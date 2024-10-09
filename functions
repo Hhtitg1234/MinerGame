@@ -1,7 +1,0 @@
-def shop_list():
-    print("Welcome to shop! Do U want to buy smth? ")
-    print("To buy press NUMBER")
-    print("1) store of electricity: 1000 kW. Cost: 250\n"
-          "2) 1 lvl miner. Coins per second: 2. Energy consumption: 5. Cost: 20\n"
-          "3) 2 lvl miner. Coins per second: 5. Energy consumption: 8. Cost: 120\n"
-          "4) 3 lvl miner. Coins per second: 10. Energy consumption: 15. Cost: 350\n")
