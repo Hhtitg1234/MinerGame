@@ -21,8 +21,9 @@ k.add_hotkey('p', lambda: print("The essence of the game is to swing up to level
                                 "store will open, which will have different\n"
                                 "mining farms in terms of capacity and cost. It won't be a problem to buy them.\n"
                                 "There is also an electricity consumption in the game. By buying a more powerful farm\n"
-                                ",electricity consumption increases. To increase your energy supply, buy a store of\n"
-                                "electricity in the store. Initially, the energy consumption is 1 kW per hour. When \n"
+                                ",electricity consumption increases. To increase your energy supply purchase a supply\n"
+                                "of electricity from the energy store by pressing the E key.. Initially,\n"
+                                "the energy consumption is 1 kW per hour. When \n"
                                 "buying a new farm, the level increases. When you buy a new farm, the old one\n"
                                 "disappears. To find out stat\n"
                                 "(number of coins, coins per second, level and energy consumption), press the T key\n"))
