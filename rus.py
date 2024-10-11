@@ -6,9 +6,9 @@ import functions_rus
 
 def rus():
     # Переменные
-    coins = 9999999999
+    coins = 0
     coins_per_sec = 0.5
-    energy = 50000000000
+    energy = 500
     energy_consumption = 1
     lvl = 0
     loose = False
